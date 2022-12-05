@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="number" id="num1"><br>
+<input type="button" value="+" data-calc="plus">
+<input type="button" value="-" data-calc="minus">
+<input type="button" value="/" data-calc="divide">
+<input type="button" value="*" data-calc="multiply">
+<br>
+<input type="number" id="num2">
+<div id="result"></div>
+
+<script>
+    let num1 = document.getElementById("num1");
+    let num2 = document.getElementById("num2");
+    let result = document.getElementById("result");
+    let buttons = document.querySelectorAll("input[type=button]");
+    let i=0;
+    while (i<buttons.length){
+        buttons[i].addEventListener("click", calculate);
+        i++;
+    }
+
+    function calculate(e) {
+        switch (e.target.getAttribute("data-calc")) {
+            case "plus":
+                result.innerText = parseInt(num1.value) + parseInt(num2.value);
+                break;
+            case "minus":
+                result.innerText = parseInt(num1.value) - parseInt(num2.value);
+                break;
+            case "divide":
+                result.innerText = parseInt(num1.value) / parseInt(num2.value);
+                break
+            case "multiply":
+                result.innerText = parseInt(num1.value) * parseInt(num2.value);
+                break;
+            default:
+                return -1;
+        }
+    }
+</script>
+
+
+</body>
+</html>
